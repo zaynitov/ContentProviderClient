@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String NOTE_TABLE = "notifications";
     public static final Uri CONTENT_URI =
             Uri.parse("content://" + AUTHORITY + "/" + NOTE_TABLE);
-
+    public static final Uri CONTENT_URI_FORDELETE =
+            Uri.parse("content://" + AUTHORITY + "/" + NOTE_TABLE+"/1");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ContentResolver contentResolver = getContentResolver();
         getContentResolver().insert(CONTENT_URI, getContentValues(3, "HelloFromHeaven", "It's perfect here"));
         Log.d("outter", "inserted");
-        getContentResolver().delete(CONTENT_URI, null, null);
+        getContentResolver().delete(CONTENT_URI_FORDELETE, null, null);
         Log.d("outter", "deleted" + CONTENT_URI.toString());
 
     }
